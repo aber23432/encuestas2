@@ -1,0 +1,53 @@
+{% extends "polls/base.html" %}
+
+{% block barra %}
+<!--
+	<div class="dropdown">
+  		<a class="btn btn-secondary dropdown-toggle" href="{% url 'polls:index' %}" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown link</a>
+
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+		    {% if latest_question_list %}
+				<ul>
+					{% for question in latest_question_list %}
+					<ol>
+						<a href="{% url 'polls:detail' question.id %}" class="dropdown-item">{{ question.question_text }}</a>
+					</ol>
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p>No hay encuestas disponibles</p>
+			{% endif %}
+		</div>
+	</div>
+-->
+	
+{% endblock %}
+
+{% block principal %}
+<!--
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+-->
+<main role="main" class="inner cover">
+    <h1 class="cover-heading">Preguntas hechas recientemente.</h1><br>
+    <p class="lead">
+    </p>
+    <div class="row">
+    	<div class="col-sm-12">
+    	{% if latest_question_list %}
+			<ul>
+				{% for question in latest_question_list %}
+					
+						<a href="{% url 'polls:detail' question.id %}" class="btn btn-sm btn-secondary btn-block">{{ question.question_text }}</a>
+					
+					<br>
+				{% endfor %}
+			</ul>
+			{% else %}	
+				<p>No hay encuestas disponibles</p>
+			{% endif %}
+		</div>
+	</div>
+</main>
+
+{% endblock %}
