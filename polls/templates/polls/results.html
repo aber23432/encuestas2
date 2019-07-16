@@ -3,15 +3,24 @@
 
 <div class="container">
 	<h1>Total de votos para </h1><h1>{{ question.question_text }}</h1>
-	<div class="container">
-		<ul>
-		{% for choice in question.choice_set.all %}
-		    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-		{% endfor %}
-		</ul>
-
-		<a href="{% url 'polls:detail' question.id %}">Queres votar de nuevo?</a>
-	</div>
+	<table class="table">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Opción</th>
+				<th scope="col">votos</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for choice in question.choice_set.all %}
+			<tr>
+				<td>{{ choice.id }}</td>
+				<td>{{ choice.choice_text }}</td>
+				<td>{{ choice.votes }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 </div>
 
 {% endblock %}
